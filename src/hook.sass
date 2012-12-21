@@ -1,0 +1,110 @@
+=tranny
+  -webkit-transition: all 0.3s
+  -moz-transition: all 0.3s
+  -o-transition: all 0.3s
+  transition: all 0.3s
+
+=corny($radius:4px)
+  -webkit-border-radius: $radius
+  -moz-border-radius: $radius
+  border-radius: $radius
+
+=corny_bottom($radius:4px)
+  -webkit-border-bottom-radius: $radius
+  -moz-border-bottom-radius: $radius
+  border-bottom-radius: $radius
+
+=corny_top($radius:4px)
+  -webkit-border-top-radius: $radius
+  -moz-border-top-radius: $radius
+  border-top-radius: $radius
+
+=shadowy
+  //-moz-box-shadow:    1px 1px 5px 0px rgba(#000, 0.1)
+  //-webkit-box-shadow: 1px 1px 5px 0px rgba(#000, 0.1)
+  box-shadow:         1px 1px 5px 0px rgba(#000, 0.1)
+  
+@font-face
+  font:
+    family: "hook"
+    weight: normal
+    style: normal
+  src: url("http://assets.heroku.com.s3.amazonaws.com/hook/hook.woff") format("woff")
+
+$menu_width: 140px
+$link_x_padding: 10px
+$link_y_padding: 8px
+
+$foreground_color: rgba(#CDBEE8, 1)
+$background_color: #2D1E4F
+$link_color: rgba(#FFF, 0.6)
+$link_color_active: rgba(#FFF, 1)
+$link_hover_bg_color: rgba(#FFF, 0.1)
+$line_color: rgba(#FFF, 0.1)
+
+.hook
+  position: fixed
+  top: 10px
+  right: 10px
+  margin: 0
+  padding: 0
+  font:
+    family: "helvetica neue", helvetica, arial
+    size: 14px
+    weight: normal
+  line-height: 14px
+
+  a.toggler
+    font-family: "hook"
+    font-weight: normal
+    display: block
+    width: 30px
+    height: 42px
+    font-size: 28px
+    line-height: 42px
+    text-decoration: none
+    text-align: center
+    background-color: $background_color
+    color: $foreground_color
+    +corny(5px)
+    border: 2px solid $foreground_color
+    +shadowy
+    
+  > ul
+    +tranny
+    +corny
+    position: absolute
+    top: 50px
+    right: -$menu_width - 20px
+    //opacity: 0
+    //max-height: 0
+    width: $menu_width
+    margin: 0
+    padding: 0
+    list-style: none
+    background-color: $background_color
+    li
+      border-bottom: 1px solid $line_color
+      a
+        display: block
+        padding: $link_y_padding $link_x_padding
+        color: $link_color
+        text-decoration: none
+        &:hover
+          background-color: $link_hover_bg_color
+          color: $link_color_active
+      &:first-child
+        a
+          padding-top: $link_y_padding + 3px
+          +corny_top
+      &:last-child
+        border: none
+        a
+          padding-bottom: $link_y_padding + 3px
+          +corny_bottom
+
+  &.active
+    > ul
+      right: 0
+      
+  
