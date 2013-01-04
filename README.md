@@ -23,7 +23,9 @@ manually:
   <script src="https://s3.amazonaws.com/assets.heroku.com/hook/hook.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function(){
-      window.hook = new Hook({});
+      window.hook = new Hook({
+        addon: 'foo', app: 'bar'
+      });
     });
   </script>
 </head>
@@ -51,4 +53,11 @@ CoffeeScript includes a simple build system similar to Make and Rake. Naturally,
 open http://nodejs.org/download/
 npm install -g coffee-script
 cake assets:watch
+```
+
+Testing is done with [CasperJS](http://casperjs.org/):
+
+```bash
+brew install casperjs         # Install casperjs (on OS X)
+casperjs test test/ --coffee  # Run all .coffee tests in the /test directory
 ```

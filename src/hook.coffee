@@ -1,14 +1,12 @@
-# https://s3.amazonaws.com/assets.heroku.com/hook/hook.js
-# https://s3.amazonaws.com/assets.heroku.com/hook/hook.css
-# https://assets.heroku.com.s3.amazonaws.com/hook/hook.woff
-
 class Hook
   
   constructor: (@options={}) ->
 
     # Config
-    @cssUrl = @options.cssUrl || "https://s3.amazonaws.com/assets.heroku.com/hook/hook.css"
-    @corner = @options.corner or 'tr'
+    if @options.localMode
+      @cssUrl = "http://localhost:8000/lib/hook.css"
+    else
+      @cssUrl = "https://s3.amazonaws.com/assets.heroku.com/hook/hook.css"
     
     # DOM Shortcuts
     @head = document.querySelector("head")
@@ -17,17 +15,17 @@ class Hook
     @attachStylesheet()
     @attachDiv()
     
-    window.addEventListener('click', @hideMenu);
-    document.querySelector("#hook a.toggler").addEventListener('click', @toggleMenu);
+    window.addEventListener('click', @hideMenu)
+    document.querySelector("#hook a.toggler").addEventListener('click', @toggleMenu)
     
-    console.log @
-    
+    # console.log @
 
   attachStylesheet: ->
     link = document.createElement("link")
     link.type = "text/css"
     link.rel  = "stylesheet"
     link.href = @cssUrl
+    # link.onload = -> console.log "stylesheet loaded"
     @head.appendChild(link)
   
   attachDiv: ->
@@ -35,10 +33,10 @@ class Hook
     @div.className = "hook"
     @div.id = "hook"
     @div.innerHTML = """
-      <a href="#" class="toggler">&#xf100</a>
+      <a href="#" class="toggler">heroku</a>
       <ul>
-        <li><a href="https://www.heroku.com">My Apps</a></li>
-        <li><a href="https://addons.heroku.com">Addons</a></li>
+        <li><a href="https://dashboard.heroku.com">My Apps</a></li>
+        <li><a href="https://addons.heroku.com">Add-ons</a></li>
         <li><a href="https://devcenter.heroku.com">Documentation</a></li>
         <li><a href="https://help.heroku.com">Support</a></li>
       </ul>
@@ -46,15 +44,26 @@ class Hook
     @body.appendChild(@div)
 
   hideMenu: ->
-    console.log 'hideMenu'
-    document.querySelector("#hook").classList.remove("active")
+    h = document.querySelector("#hook")
+    h.classList.remove("active") if h
     
-  toggleMenu: (e) ->
+  toggleMenu: (e=null) ->
     document.querySelector("#hook").classList.toggle("active")
-    e.stopPropagation()
-        
+    # Don't let the click propage to window, or it will @hideMenu
+    e.stopPropagation() if e
+
+  # Remove hook and its event listeners.
+  # (Used by demo and tests.)
+  @reset: ->
+    h = document.getElementById('hook')
+    if h
+      toggler = h.querySelector("a.toggler")
+      toggler.removeEventListener('click', @toggleMenu) if toggler
+      window.removeEventListener('click', @hideMenu)
+      h.parentNode.removeChild(h) if h
+
 window.Hook = Hook
 
-document.addEventListener "DOMContentLoaded", ->
-  unless document.querySelector("body.no-hook")
-    window.hook = new Hook()
+# document.addEventListener "DOMContentLoaded", ->
+#   unless document.querySelector("body.no-hook")
+#     window.hook = new Hook()

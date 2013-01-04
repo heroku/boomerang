@@ -1,3 +1,5 @@
+@import "icon_font"
+
 =tranny
   -webkit-transition: all 0.3s
   -moz-transition: all 0.3s
@@ -22,14 +24,7 @@
 =shadowy
   //-moz-box-shadow:    1px 1px 5px 0px rgba(#000, 0.1)
   //-webkit-box-shadow: 1px 1px 5px 0px rgba(#000, 0.1)
-  box-shadow:         1px 1px 5px 0px rgba(#000, 0.1)
-  
-@font-face
-  font:
-    family: "hook"
-    weight: normal
-    style: normal
-  src: url("http://assets.heroku.com.s3.amazonaws.com/hook/hook.woff") format("woff")
+  box-shadow:         1px 1px 5px 0px rgba(#000, 0.1)  
 
 $menu_width: 140px
 $link_x_padding: 10px
@@ -55,20 +50,21 @@ $line_color: rgba(#FFF, 0.1)
   line-height: 14px
 
   a.toggler
-    font-family: "hook"
+    +corny(5px)
+    +shadowy
+    font-family: "heroku"
     font-weight: normal
     display: block
-    width: 30px
-    height: 42px
+    width: 26px
+    height: 36px
     font-size: 28px
-    line-height: 42px
+    line-height: 36px
     text-decoration: none
     text-align: center
     background-color: $background_color
     color: $foreground_color
-    +corny(5px)
     border: 2px solid $foreground_color
-    +shadowy
+
     
   > ul
     +tranny
@@ -76,8 +72,6 @@ $line_color: rgba(#FFF, 0.1)
     position: absolute
     top: 50px
     right: -$menu_width - 20px
-    //opacity: 0
-    //max-height: 0
     width: $menu_width
     margin: 0
     padding: 0

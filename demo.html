@@ -1,13 +1,25 @@
 <head>
-  <title>Hook</title>
-  <script src="//localhost:8000/lib/hook.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      // window.hook = new Hook({cssUrl: '//localhost:8000/lib/hook.css'});
-      window.hook = new Hook();
-    });
-  </script>  
+  <title>Hook Demo</title>
+  <script src="http://localhost:8000/lib/hook.js"></script>
+  <script src="http://localhost:8000/lib/demo.js"></script>
+  <link rel="stylesheet" href="http://assets.heroku.com.s3.amazonaws.com/heliotrope/heliotrope-01.css"></link>
+  <style>
+    body {
+      padding: 20px;
+    }
+  </style>
 </head>
 
 <body class='no-hook'>
+  
+  <h1>Hook Demo</h1>
+  
+  <ul class='demo_links'>
+    <li><a href="#" class="a">Demo A</a></li>
+    <li><a href="#" class="b">Demo B</a></li>
+    <li><a href="#" class="c">Demo C</a></li>
+  </ul>
+  
+  <a href="#" onclick="Hook.reset();return false" class="reset">Reset</a>
+  
 </body>
