@@ -1,12 +1,12 @@
-class Hook
+class Boomerang
   
   constructor: (@options={}) ->
 
     # Config
     if @options.localMode
-      @cssUrl = "http://localhost:8000/lib/hook.css"
+      @cssUrl = "http://localhost:8080/lib/boomerang.css"
     else
-      @cssUrl = "https://s3.amazonaws.com/assets.heroku.com/hook/hook.css"
+      @cssUrl = "https://s3.amazonaws.com/assets.heroku.com/boomerang/boomerang.css"
       
     console.log @cssUrl
     @app = @options.app
@@ -20,7 +20,7 @@ class Hook
     
     # Event Listeners
     window.addEventListener('click', @hideMenu)
-    document.querySelector("#hook a.toggler").addEventListener('click', @toggleMenu)
+    document.querySelector("#boomerang a.toggler").addEventListener('click', @toggleMenu)
     
     # console.log @
 
@@ -34,8 +34,8 @@ class Hook
   
   attachDiv: ->
     @div = document.createElement("div")
-    @div.className = "hook"
-    @div.id = "hook"
+    @div.className = "boomerang"
+    @div.id = "boomerang"
     if @app?
       @div.innerHTML = """
         <a href="#" class="toggler">heroku</a>
@@ -60,26 +60,26 @@ class Hook
     @body.appendChild(@div)
 
   hideMenu: ->
-    h = document.querySelector("#hook")
+    h = document.querySelector("#boomerang")
     h.classList.remove("active") if h
     
   toggleMenu: (e=null) ->
-    document.querySelector("#hook").classList.toggle("active")
+    document.querySelector("#boomerang").classList.toggle("active")
     # Don't let the click propage to window, or it will @hideMenu
     e.stopPropagation() if e
 
-  # Remove hook and its event listeners.
+  # Remove boomerang and its event listeners.
   # (Used by demo and tests.)
   @reset: ->
-    h = document.getElementById('hook')
+    h = document.getElementById('boomerang')
     if h
       toggler = h.querySelector("a.toggler")
       toggler.removeEventListener('click', @toggleMenu) if toggler
       window.removeEventListener('click', @hideMenu)
       h.parentNode.removeChild(h) if h
 
-window.Hook = Hook
+window.Boomerang = Boomerang
 
 # document.addEventListener "DOMContentLoaded", ->
-#   unless document.querySelector("body.no-hook")
-#     window.hook = new Hook()
+#   unless document.querySelector("body.no-boomerang")
+#     window.boomerang = new Boomerang()

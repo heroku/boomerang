@@ -2,22 +2,22 @@ NodeList::forEach = Array::forEach
 
 document.addEventListener "DOMContentLoaded", ->
   
-  # window.hook = new Hook(localMode: true)
+  # window.boomerang = new Boomerang(localMode: true)
 
   document.querySelectorAll("ul.demo_links li a").forEach (el) ->
     el.addEventListener "click", ->
       
       console.log "Demo #{el.className.toUpperCase()}"
 
-      Hook.reset()
+      Boomerang.reset()
       
       switch el.className
         when "a"
-          window.hook = new Hook(localMode: true)
+          window.boomerang = new Boomerang(localMode: true)
         when "b"
-          window.hook = new Hook(localMode: true, app: "queriac")
+          window.boomerang = new Boomerang(localMode: true, app: "queriac")
         when "c"
-          # window.hook = new Hook(localMode: true)
+          # window.boomerang = new Boomerang(localMode: true)
           window
         
       # return false
