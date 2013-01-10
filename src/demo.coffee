@@ -15,9 +15,11 @@ document.addEventListener "DOMContentLoaded", ->
         when "a"
           window.hook = new Hook(localMode: true)
         when "b"
-          window.hook = new Hook(localMode: true)
+          window.hook = new Hook(localMode: true, app: "queriac")
         when "c"
           # window.hook = new Hook(localMode: true)
           window
+        
+      # return false
           
       

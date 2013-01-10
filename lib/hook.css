@@ -15,9 +15,9 @@
   font-weight: normal;
   line-height: 14px; }
   .hook a.toggler {
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
     box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.1);
     font-family: "heroku";
     font-weight: normal;
@@ -52,7 +52,7 @@
       .hook > ul li a {
         display: block;
         padding: 8px 10px;
-        color: rgba(255, 255, 255, 0.6);
+        color: pink;
         text-decoration: none; }
         .hook > ul li a:hover {
           background-color: rgba(255, 255, 255, 0.1);

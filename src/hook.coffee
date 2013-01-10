@@ -7,6 +7,9 @@ class Hook
       @cssUrl = "http://localhost:8000/lib/hook.css"
     else
       @cssUrl = "https://s3.amazonaws.com/assets.heroku.com/hook/hook.css"
+      
+    console.log @cssUrl
+    @app = @options.app
     
     # DOM Shortcuts
     @head = document.querySelector("head")
@@ -15,6 +18,7 @@ class Hook
     @attachStylesheet()
     @attachDiv()
     
+    # Event Listeners
     window.addEventListener('click', @hideMenu)
     document.querySelector("#hook a.toggler").addEventListener('click', @toggleMenu)
     
@@ -32,15 +36,27 @@ class Hook
     @div = document.createElement("div")
     @div.className = "hook"
     @div.id = "hook"
-    @div.innerHTML = """
-      <a href="#" class="toggler">heroku</a>
-      <ul>
-        <li><a href="https://dashboard.heroku.com">My Apps</a></li>
-        <li><a href="https://addons.heroku.com">Add-ons</a></li>
-        <li><a href="https://devcenter.heroku.com">Documentation</a></li>
-        <li><a href="https://help.heroku.com">Support</a></li>
-      </ul>
-    """        
+    if @app?
+      @div.innerHTML = """
+        <a href="#" class="toggler">heroku</a>
+        <ul>
+          <li class="big"><a href="https://dashboard.heroku.com/apps/#{@app}">#{@app}</a></li>
+          <li class="sub"><a href="https://dashboard.heroku.com/apps/#{@app}/resources">Resources</a></li>
+          <li class="sub"><a href="https://dashboard.heroku.com/apps/#{@app}/activity">Activity</a></li>
+          <li class="sub"><a href="https://dashboard.heroku.com/apps/#{@app}/collaborators">Collborators</a></li>
+          <li class="sub"><a href="https://dashboard.heroku.com/apps/#{@app}/settings">Settings</a></li>
+        </ul>
+      """        
+    else
+      @div.innerHTML = """
+        <a href="#" class="toggler">heroku</a>
+        <ul>
+          <li><a href="https://dashboard.heroku.com">My Apps</a></li>
+          <li><a href="https://addons.heroku.com">Add-ons</a></li>
+          <li><a href="https://devcenter.heroku.com">Documentation</a></li>
+          <li><a href="https://help.heroku.com">Support</a></li>
+        </ul>
+      """        
     @body.appendChild(@div)
 
   hideMenu: ->
