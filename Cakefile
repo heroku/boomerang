@@ -30,7 +30,7 @@ task 'cut', 'Build and sync static files with S3', ->
   client = s3.createClient(
     key: process.env.S3_KEY
     secret: process.env.S3_SECRET
-    bucket: process.env.S3_BUCKET
+    bucket: 'assets.heroku.com'
   )
 
   runCommand 'stylus', ['--include', 'src', '--out', 'lib']
