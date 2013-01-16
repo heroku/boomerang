@@ -38,11 +38,15 @@ manually:
 You'll need [node](http://nodejs.org/download/) to hack on this.
 
 ```bash
-[sudo] npm install -g stylus coffee-script http-server
+[sudo] npm install -g stylus coffee-script http-server s3
 brew install casperjs
+export S3_KEY='Amazon S3 Key'
+export S3_SECRET='Amazon S3 Secret'
+export S3_BUCKET='Amazon S3 Bucket'
 ```
 
 ```bash
+cake cut                # Build and sync static files with S3
 cake dev                # runs an http server and auto-compiles code changes
 cake test               # runs casperjs test suite
 ```
