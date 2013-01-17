@@ -9,7 +9,11 @@ runCommand = (name, args) ->
   proc.on          'exit', (status) -> process.exit(1) if status != 0
 
 uploadFile = (localFile, remoteFile, client) ->
-  uploader = client.upload(localFile, remoteFile)
+  # By default, uploaded files are publically visible
+  headers =
+    'x-amz-acl': 'public-read'
+
+  uploader = client.upload(localFile, remoteFile, headers)
 
   uploader.on 'error', (err) ->
     console.error 'unable to upload:', err.stack
