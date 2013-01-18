@@ -38,7 +38,7 @@ manually:
 You'll need [node](http://nodejs.org/download/) to hack on this.
 
 ```bash
-[sudo] npm install -g http-server
+npm install
 brew install casperjs
 cp .env{.sample,}
 ```

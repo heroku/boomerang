@@ -1,0 +1,18 @@
+{
+  "name":    "boomerang",
+  "version": "0.0.1",
+
+  "dependencies": {
+    "async":           "0.1.x",
+    "coffee-script":   "1.2.x",
+    "s3":              "0.0.x",
+    "nib":             "0.9.x",
+    "stylus":          "0.32.x",
+    "http-server":     "0.5.x"
+  },
+
+  "engines": {
+    "node": "0.8.x",
+    "npm":  "1.1.x"
+  }
+}
