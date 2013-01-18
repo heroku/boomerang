@@ -7,9 +7,9 @@ class Boomerang
       @cssUrl = "http://localhost:8080/lib/boomerang.css"
     else
       @cssUrl = "https://s3.amazonaws.com/assets.heroku.com/boomerang/boomerang.css"
-      
-    console.log @cssUrl
+    
     @app = @options.app
+    @addon = @options.addon
     
     # DOM Shortcuts
     @head = document.querySelector("head")
@@ -36,20 +36,26 @@ class Boomerang
     @div = document.createElement("div")
     @div.className = "boomerang"
     @div.id = "boomerang"
-    if @app?
-      @div.innerHTML = """
-        <a href="#" class="toggler">heroku</a>
+
+    @div.innerHTML = """
+      <a href="#" class="toggler logo">Heroku Add-ons</a>
+    """
+    
+    if @app? and @addon?
+      @div.innerHTML += """
         <ul>
-          <li class="big"><a href="https://dashboard.heroku.com/apps/#{@app}">#{@app}</a></li>
+          <li class="big"><a href="http://#{@app}.herokuapp.com">#{@app}</a></li>
           <li class="sub"><a href="https://dashboard.heroku.com/apps/#{@app}/resources">Resources</a></li>
           <li class="sub"><a href="https://dashboard.heroku.com/apps/#{@app}/activity">Activity</a></li>
           <li class="sub"><a href="https://dashboard.heroku.com/apps/#{@app}/collaborators">Collborators</a></li>
           <li class="sub"><a href="https://dashboard.heroku.com/apps/#{@app}/settings">Settings</a></li>
+            
+          <li class="big"><a href="https://addons.heroku.com/#{@addon}">#{@addon}</a></li>
+          <li class="sub"><a href="https://devcenter.heroku.com/articles/#{@addon}">Docs</a></li>
         </ul>
-      """        
+      """
     else
-      @div.innerHTML = """
-        <a href="#" class="toggler">heroku</a>
+      @div.innerHTML += """
         <ul>
           <li><a href="https://dashboard.heroku.com">My Apps</a></li>
           <li><a href="https://addons.heroku.com">Add-ons</a></li>

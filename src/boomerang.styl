@@ -1,2 +1,64 @@
-body
-	color red
+body {
+  padding 50px 10px 10px 10px;
+}
+
+purple = #272B4B
+backgroundColor = purple
+linkColorInactive = rgba(#FFF, 0.6)
+linkColorActive = rgba(#FFF, 1)
+
+.boomerang
+  background-color backgroundColor
+  position fixed
+  float none
+  clear both
+  overflow hidden
+  top 0
+  left 0
+  z-index 10000
+  margin 0  
+  padding 0
+  width 100%
+  height 28px
+  font-family "helvetica neue", helvetica, arial
+  font-weight normal
+  font-size 12px
+  line-height 28px
+  
+  a.logo
+    display block
+    float left
+    max-width 200px
+    color linkColorInactive
+    text-decoration none
+    padding 0 0 0 10px
+  
+  ul
+    display block
+    float right
+    margin 0 10px 0 0
+    padding 0
+    > li
+      display block
+      float left
+      color linkColorInactive
+      margin 0
+      padding 0
+      a
+        display block
+        color linkColorInactive
+        text-decoration none        
+        padding 0
+        &:hover
+          color linkColorActive
+      &.big
+        a
+          color linkColorActive
+          padding-left 50px
+          &:after
+            color linkColorInactive
+            content: "\2192"
+            margin 0 0 0 8px
+      &.sub
+      a
+        padding 0 8px 0 0
