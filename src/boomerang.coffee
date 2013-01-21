@@ -74,6 +74,10 @@ class Boomerang
     # Don't let the click propage to window, or it will @hideMenu
     e.stopPropagation() if e
 
+
+  @init: ->
+    window.boomerang = new Boomerang()
+
   # Remove boomerang and its event listeners.
   # (Used by demo and tests.)
   @reset: ->
@@ -86,6 +90,10 @@ class Boomerang
 
 window.Boomerang = Boomerang
 
-# document.addEventListener "DOMContentLoaded", ->
-#   unless document.querySelector("body.no-boomerang")
-#     window.boomerang = new Boomerang()
+if document.querySelector('[data-app]') and document.querySelector('[data-addon]')
+
+  if document.readyState is "complete"
+    Boomerang.init()
+  else
+    document.addEventListener "DOMContentLoaded", ->
+      Boomerang.init()

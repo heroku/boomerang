@@ -8,8 +8,22 @@ It has no dependencies, a small footprint, and it works over SSL.
 
 Drop this snippet on your page and you're good to go.
 
-```js
+```html
 <script src="https://s3.amazonaws.com/assets.heroku.com/boomerang/boomerang.js"></script>
+<script>
+  Boomerang.init({app: 'foo', addon: 'bar'});
+</script>
+```
+
+If you're an existing addon provider using the old Heroku SSO header, you can try out 
+Boomerang in your browser's JavaScript console:
+
+```js
+document.querySelector('#heroku-header').style.display = 'none';
+document.querySelector('#heroku-subheader').style.display = 'none';
+var s = document.createElement('script');
+s.src = 'https://s3.amazonaws.com/assets.heroku.com/boomerang/boomerang.js';
+document.querySelector('body').appendChild(s);
 ```
 
 ## Advanced Usage

@@ -1,14 +1,19 @@
 {spawn, exec} = require 'child_process'
 
 s3 = require('s3')
+async = require('async')
 
-runCommand = (name, args) ->
+runCommand = (name, args, callback=null) ->
   proc =           spawn name, args
-  proc.stderr.on   'data', (buffer) -> console.log buffer.toString()
-  proc.stdout.on   'data', (buffer) -> console.log buffer.toString()
-  proc.on          'exit', (status) -> process.exit(1) if status != 0
-
-uploadFile = (localFile, remoteFile) ->
+  # proc.stderr.on   'data', (buffer) -> console.log buffer.toString()
+  # proc.stdout.on   'data', (buffer) -> console.log buffer.toString()
+  proc.on          'exit', (status) ->
+    if callback?
+      callback(null, name)
+    else
+      process.exit(1) if status != 0
+    
+uploadFile = (localFile, remoteFile, callback) ->
 
   unless process.env.S3_KEY and process.env.S3_SECRET
     console.error('! Set S3_KEY S3_SECRET and S3_BUCKET in your environment')
@@ -20,30 +25,32 @@ uploadFile = (localFile, remoteFile) ->
     bucket: 'assets.heroku.com'
   )
   
-  # By default, uploaded files are publically visible
-  headers =
-    'x-amz-acl': 'public-read'
+  # Make file are publicly visible
+  headers = {'x-amz-acl': 'public-read'}
 
   uploader = client.upload(localFile, remoteFile, headers)
 
   uploader.on 'error', (err) ->
     console.error 'unable to upload:', err.stack
     process.exit(1)
-
-  uploader.on 'progress', () ->
-    console.log "uploading #{localFile}"
-
-  uploader.on 'end', ->
-    console.log 'done'
-  #   process.exit(0)
+    
+  uploader.on 'end', =>
+    callback(null, localFile)
 
 task 'cut', 'Build and sync static files with S3', ->
 
-  runCommand 'stylus', ['--include', 'src', '--out', 'lib']
-  runCommand 'coffee', ['-c', '-o', 'lib', 'src']
-
-  uploadFile('lib/boomerang.css', 'boomerang/boomerang.css')
-  uploadFile('lib/boomerang.js', 'boomerang/boomerang.js')
+  async.series
+    compile_stylus: (callback) ->
+      runCommand('stylus', ['--compress', 'src/boomerang.styl', '--out', 'lib'], callback)
+    compile_coffee: (callback) ->
+      runCommand('coffee', ['-c', '-o', 'lib', 'src'], callback)
+    upload_css: (callback) ->
+      uploadFile('lib/boomerang.css', 'boomerang/boomerang.css', callback)
+    upload_js: (callback) ->
+      uploadFile('lib/boomerang.js', 'boomerang/boomerang.js', callback)
+  , (err, results) ->
+    out = ("✓ #{k.replace('_', ' ')}" for k,v of results).join("\n")
+    console.log "\n#{out}\n"
 
 task 'dev', 'Watch source files and build JS & CSS', (options) ->
   runCommand 'http-server'
