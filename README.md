@@ -11,7 +11,9 @@ Drop this snippet on your page and you're good to go.
 ```html
 <script src="https://s3.amazonaws.com/assets.heroku.com/boomerang/boomerang.js"></script>
 <script>
-  Boomerang.init({app: 'foo', addon: 'bar'});
+  document.addEventListener("DOMContentLoaded", function() {
+    Boomerang.init({app: 'foo', addon: 'bar'});
+  });
 </script>
 ```
 

@@ -1,8 +1,8 @@
 body{padding:50px 10px 10px 10px}
-.boomerang{background-color:#272b4b;position:fixed;float:none;clear:both;overflow:hidden;top:0;left:0;z-index:10000;margin:0;padding:0;width:100%;height:28px;font-family:"helvetica neue",helvetica,arial;font-weight:normal;font-size:12px;line-height:28px;}
-.boomerang a.logo{display:block;float:left;max-width:200px;color:rgba(255,255,255,0.6);text-decoration:none;padding:0 0 0 10px}
+.boomerang{background-color:#272b4b;position:fixed;float:none;clear:both;overflow:hidden;top:0;left:0;z-index:10000;margin:0;padding:0;width:100%;height:32px;font-family:"helvetica neue",helvetica,arial;font-weight:normal;font-size:14px;line-height:32px;}
+.boomerang a.logo{display:block;float:left;max-width:200px;color:rgba(255,255,255,0.6);text-decoration:none;padding:0 0 0 10px;font-size:14px;line-height:32px}
 .boomerang ul{display:block;float:right;margin:0 10px 0 0;padding:0;}
-.boomerang ul > li{display:block;float:left;color:rgba(255,255,255,0.6);margin:0;padding:0;}
+.boomerang ul > li{display:block;float:left;color:rgba(255,255,255,0.6);margin:0;padding:0;font-size:14px;line-height:32px;}
 .boomerang ul > li a{display:block;color:rgba(255,255,255,0.6);text-decoration:none;padding:0;}
 .boomerang ul > li a:hover{color:#fff}
 .boomerang ul > li.big a{color:#fff;padding-left:50px;}
