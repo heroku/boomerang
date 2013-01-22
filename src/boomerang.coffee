@@ -75,8 +75,8 @@ class Boomerang
     e.stopPropagation() if e
 
 
-  @init: ->
-    window.boomerang = new Boomerang()
+  @init: (options={}) ->
+    window.boomerang = new Boomerang(options)
 
   # Remove boomerang and its event listeners.
   # (Used by demo and tests.)
