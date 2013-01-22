@@ -44,3 +44,9 @@ foreman run cake cut    # Build and sync static files with S3
 cake dev                # runs an http server and auto-compiles code changes
 cake test               # runs casperjs test suite
 ```
+
+## Old and New
+
+![http://cl.ly/image/3C0w2c1x0I3F](http://cl.ly/image/3C0w2c1x0I3F/content#.png)
+
+![http://cl.ly/image/3P3f012h3w1Y](http://cl.ly/image/3P3f012h3w1Y/content#.png)
