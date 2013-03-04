@@ -14,7 +14,7 @@ are made available to this nav, it should respond intelligently.
 
 [Many](https://github.com/heroku/heroku-nav)
 [previous](https://github.com/heroku/fuji)
-[solutions](https://github.com/heroku/fuji-sherpa) have appeared and are in use today, but their
+[solutions](https://github.com/heroku/fuji-sherpa) have appeared and are in use today, but the
 complexity, ruby-language specificity, and general inflexibility of these tools has hindered
 their adoption and maintenance.
 
