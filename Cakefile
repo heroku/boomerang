@@ -22,7 +22,7 @@ uploadFile = (localFile, remoteFile, callback) ->
   client = s3.createClient(
     key: process.env.S3_KEY
     secret: process.env.S3_SECRET
-    bucket: 'assets.heroku.com'
+    bucket: process.env.S3_BUCKET
   )
   
   # Make file are publicly visible

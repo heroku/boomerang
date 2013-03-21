@@ -57,9 +57,14 @@ You'll need [node](http://nodejs.org/download/) to hack on this.
 
 ```bash
 npm install
+```
+Be sure that ```./node_modules/.bin``` is in your path
+
+```bash
 brew install casperjs
 cp .env{.sample,}
 ```
+Edit .env and put in your S3_KEY, S3_SECRET and the S3_BUCKET from which you will serve your custom build
 
 ```bash
 foreman run cake cut    # Build and sync static files with S3
