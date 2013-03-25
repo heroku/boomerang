@@ -47,7 +47,7 @@ class Boomerang
           <li class="big"><a href="http://#{@app}.herokuapp.com">#{@app}</a></li>
           <li class="sub"><a href="https://dashboard.heroku.com/apps/#{@app}/resources">Resources</a></li>
           <li class="sub"><a href="https://dashboard.heroku.com/apps/#{@app}/activity">Activity</a></li>
-          <li class="sub"><a href="https://dashboard.heroku.com/apps/#{@app}/collaborators">Collborators</a></li>
+          <li class="sub"><a href="https://dashboard.heroku.com/apps/#{@app}/collaborators">Collaborators</a></li>
           <li class="sub"><a href="https://dashboard.heroku.com/apps/#{@app}/settings">Settings</a></li>
             
           <li class="big"><a href="https://addons.heroku.com/#{@addon}">#{@addon}</a></li>
