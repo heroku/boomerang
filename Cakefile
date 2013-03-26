@@ -15,7 +15,7 @@ runCommand = (name, args, callback=null) ->
     
 uploadFile = (localFile, remoteFile, callback) ->
 
-  unless process.env.S3_KEY and process.env.S3_SECRET
+  unless process.env.S3_KEY and process.env.S3_SECRET and process.env.S3_BUCKET
     console.error('! Set S3_KEY S3_SECRET and S3_BUCKET in your environment')
     process.exit(1)
 
