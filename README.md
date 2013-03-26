@@ -37,6 +37,14 @@ Drop this snippet on your page and you're good to go.
 </script>
 ```
 
+## Overriding Styles
+
+The included styles for Boomerang target the `.boomerang` selector.
+
+If you would like to override any aspect of its style, write your CSS
+declarations for the `#boomerang` selector. This is more specific, and will
+override the default styles.
+
 ## Test Drive
 
 If you're an existing addon provider using the old Heroku SSO header, you can try out
