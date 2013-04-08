@@ -1,5 +1,5 @@
 class Boomerang
-  
+
   constructor: (@options={}) ->
 
     # Config
@@ -7,22 +7,23 @@ class Boomerang
       @cssUrl = "http://localhost:8080/lib/boomerang.css"
     else
       @cssUrl = "https://s3.amazonaws.com/assets.heroku.com/boomerang/boomerang.css"
-    
+
     @app = @options.app
     @addon = @options.addon
-    
+
     # DOM Shortcuts
     @head = document.querySelector("head")
     @body = document.querySelector("body")
 
     @attachStylesheet()
     @attachDiv()
-    
+
     # Event Listeners
     window.addEventListener('click', @hideMenu)
     document.querySelector("#boomerang a.toggler").addEventListener('click', @toggleMenu)
-    
+
     # console.log @
+    @body.classList.add("boomerang")
 
   attachStylesheet: ->
     link = document.createElement("link")
@@ -31,7 +32,7 @@ class Boomerang
     link.href = @cssUrl
     # link.onload = -> console.log "stylesheet loaded"
     @head.appendChild(link)
-  
+
   attachDiv: ->
     @div = document.createElement("div")
     @div.className = "boomerang"
@@ -40,7 +41,7 @@ class Boomerang
     @div.innerHTML = """
       <a href="#" class="toggler logo">Heroku Add-ons</a>
     """
-    
+
     if @app? and @addon?
       @div.innerHTML += """
         <ul>
@@ -49,7 +50,7 @@ class Boomerang
           <li class="sub"><a href="https://dashboard.heroku.com/apps/#{@app}/activity">Activity</a></li>
           <li class="sub"><a href="https://dashboard.heroku.com/apps/#{@app}/collaborators">Collaborators</a></li>
           <li class="sub"><a href="https://dashboard.heroku.com/apps/#{@app}/settings">Settings</a></li>
-            
+
           <li class="big"><a href="https://addons.heroku.com/#{@addon}">#{@addon}</a></li>
           <li class="sub"><a href="https://devcenter.heroku.com/articles/#{@addon}">Docs</a></li>
         </ul>
@@ -62,13 +63,13 @@ class Boomerang
           <li><a href="https://devcenter.heroku.com">Documentation</a></li>
           <li><a href="https://help.heroku.com">Support</a></li>
         </ul>
-      """        
+      """
     @body.appendChild(@div)
 
   hideMenu: ->
     h = document.querySelector("#boomerang")
     h.classList.remove("active") if h
-    
+
   toggleMenu: (e=null) ->
     document.querySelector("#boomerang").classList.toggle("active")
     # Don't let the click propage to window, or it will @hideMenu
