@@ -6,6 +6,14 @@ Boomerang is a Javascript widget that Heroku Add-on Providers embed on their
 single-sign-on pages, giving customers a way back to the Heroku website.
 It has no dependencies, a small footprint, and it works over SSL.
 
+**Old Header**
+
+![http://cl.ly/image/3C0w2c1x0I3F](http://cl.ly/image/3C0w2c1x0I3F/content#.png)
+
+**New Header**
+
+![http://cl.ly/image/3P3f012h3w1Y](http://cl.ly/image/3P3f012h3w1Y/content#.png)
+
 ## Manifesto
 
 The ideal Heroku nav should be consistent in appearance and behavior across Heroku sites
@@ -72,10 +80,3 @@ cake dev                # runs an http server and auto-compiles code changes
 cake test               # runs casperjs test suite
 ```
 
-## Old Header
-
-![http://cl.ly/image/3C0w2c1x0I3F](http://cl.ly/image/3C0w2c1x0I3F/content#.png)
-
-## New Header
-
-![http://cl.ly/image/3P3f012h3w1Y](http://cl.ly/image/3P3f012h3w1Y/content#.png)
