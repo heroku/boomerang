@@ -8,7 +8,8 @@
     "s3":              "0.0.x",
     "nib":             "0.9.x",
     "stylus":          "0.32.x",
-    "http-server":     "0.5.x"
+    "http-server":     "0.5.x",
+    "yuglify":         "0.1.x"
   },
 
   "engines": {
