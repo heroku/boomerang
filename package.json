@@ -1,7 +1,11 @@
 {
   "name":    "boomerang",
   "version": "0.0.1",
-
+  "homepage": "https://github.com/heroku/boomerang",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heroku/boomerang.git"
+  },
   "dependencies": {
     "async":           "0.1.x",
     "coffee-script":   "1.2.x",
