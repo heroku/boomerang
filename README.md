@@ -45,6 +45,56 @@ Drop this snippet on your page and you're good to go.
 </script>
 ```
 
+## Async Usage
+
+Boomerang also support async loading, to do so drop this snippet in your page:
+
+```html
+<script type="text/javascript">
+  var _bm = {
+    localMode: true,
+    app: "quierac",
+    addon: "honeybadger"
+  };
+  (function() {
+    function load() {
+      var bm = document.createElement('script'); bm.type = 'text/javascript'; bm.async = true;
+      bm.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 's3.amazonaws.com/assets.heroku.com/boomerang/boomerang.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(bm, s);
+    }
+    document.addEventListener("DOMContentLoaded", load, false);
+  })();
+</script>
+```
+
+Note that this snippet can be split in half:
+
+```html
+<html>
+ <head>
+  <script type="text/javascript">
+   var _bm = {
+     localMode: true,
+     app: "quierac",
+     addon: "honeybadger"
+   };
+  </script>
+ </head>
+ <body>
+  <script type="text/javascript">
+   (function() {
+     function load() {
+       var bm = document.createElement('script'); bm.type = 'text/javascript'; bm.async = true;
+       bm.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 's3.amazonaws.com/assets.heroku.com/boomerang/boomerang.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(bm, s);
+     }
+     document.addEventListener("DOMContentLoaded", load, false);
+   })();
+  </script>
+ </body>
+</html>
+``` 
+
 ## Test Drive
 
 If you're an existing addon provider using the old Heroku SSO header, you can try out

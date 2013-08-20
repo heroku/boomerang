@@ -1,7 +1,5 @@
 class Boomerang
-
   constructor: (@options={}) ->
-
     # Config
     if @options.localMode
       @cssUrl = "http://localhost:8080/lib/boomerang.css"
@@ -75,7 +73,6 @@ class Boomerang
     # Don't let the click propage to window, or it will @hideMenu
     e.stopPropagation() if e
 
-
   @init: (options={}) ->
     window.boomerang = new Boomerang(options)
 
@@ -92,9 +89,11 @@ class Boomerang
 window.Boomerang = Boomerang
 
 if document.querySelector('[data-app]') and document.querySelector('[data-addon]')
-
   if document.readyState is "complete"
     Boomerang.init()
   else
     document.addEventListener "DOMContentLoaded", ->
       Boomerang.init()
+
+Boomerang.init(window._bm) if window._bm?
+
