@@ -66,7 +66,7 @@ task 'cut', 'Build and sync static files with S3', ->
 
 task 'dev', 'Watch source files and build JS & CSS', (options) ->
   runCommand 'http-server'
-  runCommand 'stylus', ['--watch', 'src', '--out', 'lib']
+  runCommand 'stylus', ['--compress', '--watch', 'src', '--out', 'lib']
   runCommand 'coffee', ['-cw', '-o', 'lib', 'src']
 
 task 'test', 'Run the tests', (options) ->
