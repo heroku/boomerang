@@ -35,6 +35,7 @@ class Boomerang
 
   attachDiv: ->
     @div = document.createElement("div")
+    @div.className = "boomerang" # TODO: temporary
     @div.id = "heroku-boomerang"
 
     @div.innerHTML = """
