@@ -23,7 +23,7 @@ class Boomerang
     document.querySelector("#boomerang a.toggler").addEventListener('click', @toggleMenu)
 
     # console.log @
-    @body.classList.add("boomerang")
+    @body.classList.add("heroku-boomerang-loaded")
 
   attachStylesheet: ->
     link = document.createElement("link")
