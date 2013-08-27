@@ -4,22 +4,25 @@
   <script src="http://localhost:8080/lib/demo.js"></script>
   <style>
     body {
-      padding: 20px;
       font-family: Helvetica;
+    }
+
+    body.heroku-boomerang-loaded {
+      padding: 20px;
     }
   </style>
 </head>
 
 <body class='no-boomerang'>
-  
+
   <h1>Boomerang Demo</h1>
-  
+
   <ul class='demo_links'>
     <li><a href="#" class="a">Demo A</a></li>
     <li><a href="#" class="b">Demo B (with app and addon)</a></li>
     <li><a href="#" class="c">Demo C</a></li>
   </ul>
-  
+
   <a href="#" onclick="Boomerang.reset();return false" class="reset">Reset</a>
-  
+
 </body>

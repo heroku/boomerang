@@ -20,7 +20,7 @@ class Boomerang
 
     # Event Listeners
     window.addEventListener('click', @hideMenu)
-    document.querySelector("#boomerang a.toggler").addEventListener('click', @toggleMenu)
+    document.querySelector("#heroku-boomerang a.toggler").addEventListener('click', @toggleMenu)
 
     # console.log @
     @body.classList.add("heroku-boomerang-loaded")
@@ -35,8 +35,7 @@ class Boomerang
 
   attachDiv: ->
     @div = document.createElement("div")
-    @div.className = "boomerang"
-    @div.id = "boomerang"
+    @div.id = "heroku-boomerang"
 
     @div.innerHTML = """
       <a href="#" class="toggler logo">Heroku Add-ons</a>
@@ -67,11 +66,11 @@ class Boomerang
     @body.appendChild(@div)
 
   hideMenu: ->
-    h = document.querySelector("#boomerang")
+    h = document.querySelector("#heroku-boomerang")
     h.classList.remove("active") if h
 
   toggleMenu: (e=null) ->
-    document.querySelector("#boomerang").classList.toggle("active")
+    document.querySelector("#heroku-boomerang").classList.toggle("active")
     # Don't let the click propage to window, or it will @hideMenu
     e.stopPropagation() if e
 
