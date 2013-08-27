@@ -1,4 +1,4 @@
-{spawn, exec} = require 'child_process'
+{spawn} = require 'child_process'
 
 s3 = require('s3')
 async = require('async')
@@ -36,23 +36,33 @@ uploadFile = (localFile, remoteFile, callback) ->
   uploader.on 'end', =>
     callback(null, localFile)
 
-task 'cut', 'Build and sync static files with S3', ->
-  async.series
+series = (tasks) ->
+  async.series tasks, (err, results) ->
+    out = ("✓ #{k.replace('_', ' ')}" for k,v of results).join("\n")
+    console.log "\n#{out}\n"
+
+task 'build', 'Build static files', ->
+  series
     compile_stylus: (callback) ->
       runCommand('stylus', ['--compress', 'src/boomerang.styl', '--out', 'lib'], callback)
     compress_css: (callback) ->
-      runCommand('yuglify', ['--type', 'js', 'lib/boomerang.js'], callback)
+      runCommand('yuglify', ['--type', 'css', 'lib/boomerang.css'], callback)
     compile_coffee: (callback) ->
       runCommand('coffee', ['-c', '-o', 'lib', 'src'], callback)
     compress_js: (callback) ->
-      runCommand('yuglify', ['--type', 'css', 'lib/boomerang.css'], callback)
+      runCommand('yuglify', ['--type', 'js', 'lib/boomerang.js'], callback)
+
+task 'release', 'Sync static files to S3', ->
+  series
     upload_css: (callback) ->
       uploadFile('lib/boomerang.min.css', 'boomerang/boomerang.css', callback)
     upload_js: (callback) ->
       uploadFile('lib/boomerang.min.js', 'boomerang/boomerang.js', callback)
-  , (err, results) ->
-    out = ("✓ #{k.replace('_', ' ')}" for k,v of results).join("\n")
-    console.log "\n#{out}\n"
+
+
+task 'cut', 'Build and sync static files with S3', ->
+  invoke 'build'
+  invoke 'release'
 
 task 'dev', 'Watch source files and build JS & CSS', (options) ->
   runCommand 'http-server'
