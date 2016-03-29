@@ -62,17 +62,34 @@ You'll need [node](http://nodejs.org/download/) to hack on this.
 ```bash
 npm install
 ```
+
 Be sure that ```./node_modules/.bin``` is in your path
 
 ```bash
 brew install casperjs
 cp .env{.sample,}
 ```
+
+To run tests:
+
+```bash
+cake test               # runs casperjs test suite
+```
+
+To run a development server, run the commands below.
+Be aware that `http-server` is not chatty at all.
+In fact, it does not give any output to suggest that it is booted and working.
+Trust that it is happy and working until you see errors.
+
+```
+cake dev                # runs an http server and auto-compiles code changes
+open demo.html          # opens a file in your browser that pulls in your development copies of Boomerang
+```
+
+Finally, to publish your files:
+
 Edit .env and put in your S3_KEY, S3_SECRET and the S3_BUCKET from which you will serve your custom build
 
 ```bash
 foreman run cake cut    # Build and sync static files with S3
-cake dev                # runs an http server and auto-compiles code changes
-cake test               # runs casperjs test suite
 ```
-
