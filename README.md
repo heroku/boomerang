@@ -63,7 +63,7 @@ You'll need [node](http://nodejs.org/download/) to hack on this.
 npm install
 ```
 
-Be sure that ```./node_modules/.bin``` is in your path
+Be sure that `./node_modules/.bin` is in your path
 
 ```bash
 brew install casperjs
@@ -81,7 +81,7 @@ Be aware that `http-server` is not chatty at all.
 In fact, it does not give any output to suggest that it is booted and working.
 Trust that it is happy and working until you see errors.
 
-```
+```bash
 cake dev                # runs an http server and auto-compiles code changes
 open demo.html          # opens a file in your browser that pulls in your development copies of Boomerang
 ```
