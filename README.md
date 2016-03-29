@@ -83,6 +83,8 @@ Trust that it is happy and working until you see errors.
 
 ```bash
 cake dev                # runs an http server and auto-compiles code changes
+```
+```bash
 open demo.html          # opens a file in your browser that pulls in your development copies of Boomerang
 ```
 
