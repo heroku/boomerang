@@ -82,7 +82,7 @@ class Boomerang
   # Remove boomerang and its event listeners.
   # (Used by demo and tests.)
   @reset: ->
-    h = document.getElementById('boomerang')
+    h = document.getElementById('heroku-boomerang')
     if h
       toggler = h.querySelector("a.toggler")
       toggler.removeEventListener('click', @toggleMenu) if toggler
