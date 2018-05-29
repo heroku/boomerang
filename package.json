@@ -1,5 +1,5 @@
 {
-  "name":    "boomerang",
+  "name": "boomerang",
   "version": "0.0.1",
   "homepage": "https://github.com/heroku/boomerang",
   "repository": {
@@ -7,17 +7,16 @@
     "url": "https://github.com/heroku/boomerang.git"
   },
   "dependencies": {
-    "async":           "0.2.9",
-    "coffee-script":   "1.6.x",
-    "s3":              "0.3.1",
-    "nib":             "0.9.x",
-    "stylus":          "0.32.x",
-    "http-server":     "0.5.x",
-    "yuglify":         "0.1.x"
+    "async": "0.2.9",
+    "coffee-script": "1.6.x",
+    "s3": "0.3.1",
+    "nib": "0.9.x",
+    "stylus": "0.32.x",
+    "http-server": "0.5.x",
+    "yuglify": "0.1.x"
   },
-
   "engines": {
     "node": "0.8.x",
-    "npm":  "1.1.x"
+    "npm": "1.1.x"
   }
 }
