@@ -15,6 +15,9 @@ class Boomerang
     @head = document.querySelector("head")
     @body = document.querySelector("body")
 
+    # a parent div to insert Boomerang into.
+    @parent = @options.parent || @body
+
     @attachStylesheet()
     @attachDiv()
 
@@ -64,7 +67,7 @@ class Boomerang
           <li><a href="https://help.heroku.com">Support</a></li>
         </ul>
       """
-    @body.appendChild(@div)
+    @parent.appendChild(@div)
 
   hideMenu: ->
     h = document.querySelector("#heroku-boomerang")
