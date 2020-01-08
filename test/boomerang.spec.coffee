@@ -1,17 +1,17 @@
 casper.start "http://localhost:8080/demo.html", ->
 
   @click "a.reset"
-  @test.assertDoesntExist('#boomerang')
+  @test.assertDoesntExist('#heroku-boomerang')
     
   @click "a.a"
-  @waitUntilVisible "#boomerang", ->
+  @waitUntilVisible "#heroku-boomerang", ->
     @test.assertExists ".boomerang > ul"
 
   @click "a.reset"
-  @test.assertDoesntExist('#boomerang')
+  @test.assertDoesntExist('#heroku-boomerang')
   
   @click "a.b"
-  @waitUntilVisible "#boomerang", ->
+  @waitUntilVisible "#heroku-boomerang", ->
     @test.assertExists ".boomerang > ul"
 
 casper.run ->
