@@ -32,7 +32,7 @@ are made available to this nav, it should respond intelligently.
 complexity, ruby-language specificity, and general inflexibility of these tools has hindered
 their adoption and maintenance.
 
-Boomerang is the latest incarnation of the Heroku add-on SSO navigation. It stands apart from its predecessors in that it's rendered client-side by a Javascript widget. The most obvious benefits to this approach are ease of integration and portability across sites regardless of their server-side lanuage.
+Boomerang is the latest incarnation of the Heroku add-on SSO navigation. It stands apart from its predecessors in that it's rendered client-side by a Javascript widget. The most obvious benefits to this approach are ease of integration and portability across sites regardless of their server-side language.
 
 ## Basic Usage
 
